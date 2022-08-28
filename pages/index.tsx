@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Header } from "@/components/header/index";
+import { Header, PriceFilter } from "@/components/index";
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +11,7 @@ const Home: NextPage = () => {
       </Head>
 
       <Header />
+      <PriceFilter />
       <main></main>
     </div>
   );

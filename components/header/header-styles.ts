@@ -18,8 +18,6 @@ export const Div = styled.div`
 `;
 
 export const NavList = styled.ul`
-  font-family: Lato, Arial, sans-serif;
-  list-style-type: none;
   overflow: hidden;
   margin: 0;
   padding: 0;
