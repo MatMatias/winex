@@ -96,7 +96,7 @@ export const ProductItem = ({ productItem }: ProductItemProps) => {
             fontWeight: "700",
           }}
         >
-          NÃO SÓCIO {formatCurrency(productItem.priceNonMember)}
+          NÃO SÓCIO R$ {formatCurrency(productItem.priceNonMember)}
         </div>
       </ProductCard>
     </Fragment>
