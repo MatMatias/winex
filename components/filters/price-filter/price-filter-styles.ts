@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const PriceFilterContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0rem;
 `;
 
 export const PriceFilterOptionsItem = styled.li`
