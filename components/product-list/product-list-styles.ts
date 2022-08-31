@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const ProductListContainer = styled.main`
-  margin-right: 5rem;
   margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `;
 
 export const ProductListHeaderCounter = styled.strong`
@@ -15,7 +17,7 @@ export const ProductListHeaderText = styled.span`
   font-weight: 200;
 `;
 
-export const ProductListDataContainer = styled.div`
+export const ProductListDataContainer = styled.ul`
   margin-top: 2rem;
   display: flex;
   flex-direction: row;

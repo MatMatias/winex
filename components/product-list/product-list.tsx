@@ -1,7 +1,9 @@
 import type { ProductItemType } from "@/types/index";
+import { useState } from "react";
 import { httpRequest } from "@/utils/index";
 import { useQuery } from "@tanstack/react-query";
 import { ProductItem } from "./product-item/index";
+import { Pagination } from "./pagination/index";
 import {
   ProductListContainer,
   ProductListHeaderCounter,
@@ -12,8 +14,12 @@ import {
 } from "./product-list-styles";
 
 export const ProductList = () => {
-  const { isLoading, isError, data, error } = useQuery(["products"], () =>
-    httpRequest("GET", "products", { page: 1, limit: 9 })
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { isLoading, isError, data, error } = useQuery(
+    ["products", currentPage],
+    () => httpRequest("GET", "products", { page: currentPage, limit: 9 }),
+    { keepPreviousData: true }
   );
 
   if (isLoading) {
@@ -24,7 +30,7 @@ export const ProductList = () => {
     return <strong>Error: {JSON.stringify(error)}</strong>;
   }
 
-  const { items, totalItems } = data;
+  const { items, totalItems, totalPages } = data;
 
   return (
     <ProductListContainer>
@@ -42,6 +48,11 @@ export const ProductList = () => {
           );
         })}
       </ProductListDataContainer>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </ProductListContainer>
   );
 };
