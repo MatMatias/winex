@@ -12,12 +12,14 @@ export async function httpRequest(
   let key: keyof ParamsType;
 
   for (key in params) {
-    const value = params[key];
+    if (params[key]) {
+      const value = params[key];
 
-    if (queryString === "" && params[key]) {
-      queryString += `${key}=${value}`;
-    } else {
-      queryString += `&${key}=${value}`;
+      if (queryString === "" && params[key]) {
+        queryString += `${key}=${value}`;
+      } else {
+        queryString += `&${key}=${value}`;
+      }
     }
   }
 

@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { useProductListStore } from "@/store/index";
 import { calculatePagesArray } from "./utils/index";
 import {
@@ -25,6 +26,18 @@ export const Pagination = ({ totalPages }: PaginationProps) => {
     totalPages,
     simultaneousPagesAmount
   );
+
+  if (totalPages === firstPage) {
+    return (
+      <PaginationList>
+        <PaginationSelectedButton>{firstPage}</PaginationSelectedButton>
+      </PaginationList>
+    );
+  }
+
+  if (totalPages === 0) {
+    return <Fragment></Fragment>;
+  }
 
   return (
     <PaginationList>

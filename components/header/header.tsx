@@ -5,10 +5,10 @@ import {
   NavItem,
   Div,
   IconsContainer,
-  SearchIcon,
   UserIcon,
   WineBoxIcon,
 } from "./header-styles";
+import { SearchProduct } from "./search/index";
 
 export const Header = () => {
   return (
@@ -39,7 +39,7 @@ export const Header = () => {
         </NavList>
       </Div>
       <IconsContainer>
-        <SearchIcon></SearchIcon>
+        <SearchProduct />
         <UserIcon></UserIcon>
         <WineBoxIcon></WineBoxIcon>
       </IconsContainer>

@@ -17,7 +17,7 @@ export const ProductList = () => {
   const { params } = useProductListStore((store) => store);
 
   const { isLoading, isError, data, error } = useQuery(
-    ["products", params.page, params.limit, params.priceRange],
+    ["products", params.page, params.limit, params.name, params.priceRange],
     () => httpRequest("GET", "products", params),
     { keepPreviousData: true }
   );

@@ -21,6 +21,7 @@ export type GetProductsParamsType = {
   page?: number;
   limit?: number;
   priceRange?: [number] | [number, number];
+  name?: string;
 };
 
 export type ParamsType = GetProductsParamsType;

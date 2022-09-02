@@ -7,10 +7,6 @@ function checkPagesArrayOverflow(
 }
 
 function range(firstIndex: number, lastIndex: number) {
-  if (firstIndex > lastIndex) {
-    throw "Error in ./components/product-list/pagination/utils on range function: last Index must be bigger thant the first index";
-  }
-
   const array: number[] = [];
 
   for (let i = firstIndex; i < lastIndex; ++i) {

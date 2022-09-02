@@ -38,7 +38,7 @@ export const IconsContainer = styled.div`
   gap: 0.5rem;
 `;
 
-const SpriteIcons = styled.div`
+export const SpriteIcons = styled.div`
   background: url(https://img.wine.com.br/fenix/image/_big_bang/icons/header-sprite.svg);
   background-origin: content-box;
   cursor: pointer;
@@ -47,10 +47,6 @@ const SpriteIcons = styled.div`
   outline: 0;
   height: var(--icon-width);
   width: var(--icon-height);
-`;
-
-export const SearchIcon = styled(SpriteIcons)`
-  background-position: 0 0;
 `;
 
 export const UserIcon = styled(SpriteIcons)`
