@@ -1,5 +1,5 @@
 import type { ProductItemType } from "@/types/index";
-import { useState } from "react";
+import { useProductListStore } from "@/store/index";
 import { httpRequest } from "@/utils/index";
 import { useQuery } from "@tanstack/react-query";
 import { ProductItem } from "./product-item/index";
@@ -14,11 +14,11 @@ import {
 } from "./product-list-styles";
 
 export const ProductList = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const { params } = useProductListStore((store) => store);
 
   const { isLoading, isError, data, error } = useQuery(
-    ["products", currentPage],
-    () => httpRequest("GET", "products", { page: currentPage, limit: 9 }),
+    ["products", params.page, params.limit, params.priceRange],
+    () => httpRequest("GET", "products", params),
     { keepPreviousData: true }
   );
 
@@ -48,11 +48,7 @@ export const ProductList = () => {
           );
         })}
       </ProductListDataContainer>
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <Pagination totalPages={totalPages} />
     </ProductListContainer>
   );
 };

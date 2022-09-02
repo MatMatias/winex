@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import { useProductListStore } from "@/store/index";
 import { calculatePagesArray } from "./utils/index";
 import {
   PaginationList,
@@ -10,18 +10,15 @@ import {
 
 interface PaginationProps {
   totalPages: number;
-  currentPage: number;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
 }
 
-export const Pagination = ({
-  totalPages,
-  currentPage,
-  setCurrentPage,
-}: PaginationProps) => {
+export const Pagination = ({ totalPages }: PaginationProps) => {
   const simultaneousPagesAmount = 3;
   const firstPage = 1;
   const lastPage = totalPages;
+
+  const { page: currentPage } = useProductListStore((store) => store.params);
+  const { updateParams } = useProductListStore((store) => store);
 
   const pages = calculatePagesArray(
     currentPage,
@@ -32,9 +29,7 @@ export const Pagination = ({
   return (
     <PaginationList>
       {currentPage !== firstPage && (
-        <PaginationText
-          onClick={() => setCurrentPage((prevState) => prevState - 1)}
-        >
+        <PaginationText onClick={() => updateParams({ page: currentPage - 1 })}>
           {"<<"} Anterior &nbsp;&nbsp;&nbsp;...
         </PaginationText>
       )}
@@ -49,23 +44,24 @@ export const Pagination = ({
           return (
             <PaginationMiddleButton
               key={page}
-              onClick={() => setCurrentPage(page)}
+              onClick={() => updateParams({ page: page })}
             >
               {page}
             </PaginationMiddleButton>
           );
         } else {
           return (
-            <PaginationButton key={page} onClick={() => setCurrentPage(page)}>
+            <PaginationButton
+              key={page}
+              onClick={() => updateParams({ page: page })}
+            >
               {page}
             </PaginationButton>
           );
         }
       })}
       {currentPage !== lastPage && (
-        <PaginationText
-          onClick={() => setCurrentPage((prevState) => prevState + 1)}
-        >
+        <PaginationText onClick={() => updateParams({ page: currentPage + 1 })}>
           ... &nbsp;&nbsp;&nbsp; Próximo {">>"}
         </PaginationText>
       )}

@@ -14,7 +14,7 @@ export async function httpRequest(
   for (key in params) {
     const value = params[key];
 
-    if (queryString === "") {
+    if (queryString === "" && params[key]) {
       queryString += `${key}=${value}`;
     } else {
       queryString += `&${key}=${value}`;

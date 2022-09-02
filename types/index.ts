@@ -18,8 +18,9 @@ export type ProductItemType = {
 };
 
 export type GetProductsParamsType = {
-  page: number;
-  limit: number;
+  page?: number;
+  limit?: number;
+  priceRange?: [number] | [number, number];
 };
 
 export type ParamsType = GetProductsParamsType;

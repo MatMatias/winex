@@ -1,3 +1,4 @@
+import { PriceFilterItem } from "./price-filter-item";
 import { FiltersContainer } from "../filters-styles";
 import {
   PriceFilterContainer,
@@ -13,26 +14,24 @@ export const PriceFilter = () => {
         <h1>Refine sua busca</h1>
         <h2>Por preço</h2>
         <ul>
-          <PriceFilterOptionsItem>
-            <PriceFilterOptionsItemCheckboxSelected></PriceFilterOptionsItemCheckboxSelected>
+          <PriceFilterItem priceRange={[40]}>
             <span>Até R$40</span>
-          </PriceFilterOptionsItem>
-          <PriceFilterOptionsItem>
-            <PriceFilterOptionsItemCheckbox></PriceFilterOptionsItemCheckbox>
+          </PriceFilterItem>
+          <PriceFilterItem priceRange={[40, 60]}>
             <span>R$40 a R$60</span>
-          </PriceFilterOptionsItem>
-          <PriceFilterOptionsItem>
-            <PriceFilterOptionsItemCheckbox></PriceFilterOptionsItemCheckbox>
-            <span>R$100 a $$200</span>
-          </PriceFilterOptionsItem>
-          <PriceFilterOptionsItem>
-            <PriceFilterOptionsItemCheckbox></PriceFilterOptionsItemCheckbox>
+          </PriceFilterItem>
+          <PriceFilterItem priceRange={[60, 100]}>
+            <span>R$60 a $100</span>
+          </PriceFilterItem>
+          <PriceFilterItem priceRange={[100, 200]}>
+            <span>R$100 a R$200</span>
+          </PriceFilterItem>
+          <PriceFilterItem priceRange={[200, 500]}>
             <span>R$200 a R$500</span>
-          </PriceFilterOptionsItem>
-          <PriceFilterOptionsItem>
-            <PriceFilterOptionsItemCheckbox></PriceFilterOptionsItemCheckbox>
+          </PriceFilterItem>
+          <PriceFilterItem priceRange={[500]}>
             <span>Acima de R$500</span>
-          </PriceFilterOptionsItem>
+          </PriceFilterItem>
         </ul>
       </PriceFilterContainer>
     </FiltersContainer>
