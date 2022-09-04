@@ -1,6 +1,7 @@
 export type ProductItemType = {
   avaliations: number;
   classification: string;
+  volume: string;
   country: string;
   discount: number;
   flag: string;

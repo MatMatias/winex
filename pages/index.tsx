@@ -11,7 +11,6 @@ const Home: NextPage = () => {
         <meta name="description" content="Buy wines" />
       </Head>
 
-      <Header />
       <MainContainer>
         <PriceFilter />
         <ProductList />
