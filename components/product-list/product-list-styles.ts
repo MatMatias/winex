@@ -26,6 +26,7 @@ export const ProductListDataContainer = styled.ul`
 `;
 
 export const ProductCard = styled.li`
+  cursor: pointer;
   width: 340px;
   height: 480px;
   align-items: center;

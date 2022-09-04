@@ -1,6 +1,8 @@
 import type { ProductItemType } from "@/types/index";
 import { Fragment } from "react";
+import { useProductStore } from "@/store/index";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { formatCurrency } from "@/utils/index";
 import { ProductCard } from "../product-list-styles";
 
@@ -9,9 +11,17 @@ type ProductItemProps = {
 };
 
 export const ProductItem = ({ productItem }: ProductItemProps) => {
+  const { updateProduct } = useProductStore((store) => store);
+  const router = useRouter();
+
   return (
     <Fragment>
-      <ProductCard>
+      <ProductCard
+        onClick={() => {
+          updateProduct(productItem);
+          router.push("/product");
+        }}
+      >
         <Image
           src={productItem.image}
           alt="Item image"
