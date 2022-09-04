@@ -39,3 +39,4 @@ $ yarn dev
 - [Typescript](https://www.typescriptlang.org/)
 - [Nextjs](https://nextjs.org/docs/getting-started)
 - [Styled-components](https://styled-components.com/)
+- [Zustand](https://github.com/pmndrs/zustand)
