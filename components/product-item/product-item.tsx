@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { useProductStore } from "@/store/index";
 import Image from "next/image";
+import { RatingStars } from "./rating-stars";
 import {
   ProductItemContainer,
   InfoContainer,
@@ -55,9 +56,19 @@ export const ProductItem = () => {
               <span>{product.country}</span>
               <span>{product.type}</span>
               <span>{product.classification}</span>
-              <span>{product.size}</span>
-              <span>{product.rating}</span>
-              <span>({product.avaliations})</span>
+              {product.size ? (
+                <span>{product.size}</span>
+              ) : (
+                <span>{product.volume}</span>
+              )}
+              {product.avaliations > 0 ? (
+                <Fragment>
+                  <RatingStars howManyStars={product.rating} />
+                  <span>({product.avaliations})</span>
+                </Fragment>
+              ) : (
+                <span>Sem avaliações</span>
+              )}
             </SubheaderContainer>
 
             <PriceContainer>
