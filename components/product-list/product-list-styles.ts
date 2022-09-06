@@ -45,6 +45,7 @@ export const ProductContainer = styled.div`
 `;
 
 export const AddToChartButton = styled.button`
+  cursor: pointer;
   display: inline-block;
   background-color: rgb(126, 188, 67);
   color: white;
