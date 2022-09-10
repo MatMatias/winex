@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment, useState } from "react";
 import {
   HeaderContainer,
@@ -21,12 +22,15 @@ export const Header = () => {
       {isChartOpen && <Chart setIsChartOpen={setIsChartOpen} />}
       <HeaderContainer>
         <Div>
-          <Image
-            src={"https://img.wine.com.br/logo/wine/black/wine.svg"}
-            alt="Wine"
-            width="108px"
-            height="30px"
-          />
+          <Link href="/">
+            <Image
+              src={"https://img.wine.com.br/logo/wine/black/wine.svg"}
+              alt="Wine"
+              width="108px"
+              height="30px"
+              style={{ cursor: "pointer" }}
+            />
+          </Link>
           <NavList>
             <NavItem>
               <a href="#">Clube</a>
