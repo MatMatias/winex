@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import { useProductStore } from "@/store/index";
+import { Fragment, useState } from "react";
+import { useChartListStore, useProductStore } from "@/store/index";
 import Image from "next/image";
 import { RatingStars } from "./rating-stars";
 import {
@@ -11,15 +11,23 @@ import {
   SubheaderContainer,
   BreadcrumbTextContainer,
   GrayBreadcrumbText,
+  ChangeQuantityContainer,
+  AddProductContainer,
 } from "./product-item-styles";
+import { Notification, notify } from "@/components/notification/index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus, faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import { formatCurrency } from "@/utils/format-currency";
 
 export const ProductItem = () => {
   const { product } = useProductStore((store) => store);
+  const { increaseQuantity } = useChartListStore((store) => store);
+  const [quantity, setQuantity] = useState<number>(1);
 
   if (product) {
     return (
       <Fragment>
+        <Notification />
         <ProductItemContainer>
           <Image
             src={product.image}
@@ -113,7 +121,33 @@ export const ProductItem = () => {
               </p>
             </CommentContainer>
 
-            <AddButton>Adicionar</AddButton>
+            <AddButton>
+              <ChangeQuantityContainer>
+                <FontAwesomeIcon
+                  icon={faCircleMinus}
+                  onClick={() =>
+                    setQuantity((prevState: number) => prevState - 1)
+                  }
+                  style={{ cursor: "pointer" }}
+                />
+                {quantity}
+                <FontAwesomeIcon
+                  icon={faCirclePlus}
+                  onClick={() =>
+                    setQuantity((prevState: number) => prevState + 1)
+                  }
+                  style={{ cursor: "pointer" }}
+                />
+              </ChangeQuantityContainer>
+              <AddProductContainer
+                onClick={() => {
+                  increaseQuantity(product, quantity);
+                  notify(product.name, product.price);
+                }}
+              >
+                Adicionar
+              </AddProductContainer>
+            </AddButton>
           </InfoContainer>
         </ProductItemContainer>
       </Fragment>

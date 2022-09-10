@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import { ProductItem } from "@/components/product-item/product-item";
 import { Fragment } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Product: NextPage = () => {
   return (
@@ -21,7 +23,8 @@ const Product: NextPage = () => {
               fontWeight: "200",
             }}
           >
-            {"<"}&nbsp;&nbsp;&nbsp;Voltar
+            <FontAwesomeIcon icon={faChevronLeft} />
+            &nbsp;&nbsp;Voltar
           </a>
         </Link>
       </div>

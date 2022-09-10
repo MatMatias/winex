@@ -66,13 +66,13 @@ export const Product = ({ productItem }: ProductProps) => {
         >
           <ProductQuantity>
             <ProductQuantityButton
-              onClick={() => decreaseQuantity(productItem.product)}
+              onClick={() => decreaseQuantity(productItem.product, 1)}
             >
               -
             </ProductQuantityButton>
             <span>{productItem.quantity}</span>
             <ProductQuantityButton
-              onClick={() => increaseQuantity(productItem.product)}
+              onClick={() => increaseQuantity(productItem.product, 1)}
             >
               +
             </ProductQuantityButton>

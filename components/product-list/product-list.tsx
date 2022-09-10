@@ -50,7 +50,7 @@ export const ProductList = () => {
                 <ProductItem productItem={item} />
                 <AddToChartButton
                   onClick={() => {
-                    increaseQuantity(item);
+                    increaseQuantity(item, 1);
                     notify(item.name, item.priceMember);
                   }}
                 >

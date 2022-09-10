@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ChartProductListItem = styled.li`
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   height: 20%;
   width: 100%;
   border-bottom: 1px solid #ddd;

@@ -57,7 +57,7 @@ export const CommentContainer = styled.article`
 `;
 
 export const AddButton = styled.button`
-  display: inline-block;
+  display: flex;
   width: 380px;
   height: 60px;
   margin-top: 4rem;
@@ -66,4 +66,27 @@ export const AddButton = styled.button`
   border-radius: 10px;
   font-size: 20px;
   color: rgb(255, 255, 255);
+  align-items: center;
+`;
+
+export const ChangeQuantityContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 60%;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  height: 50%;
+  align-items: center;
+  border-right: solid 1px;
+`;
+
+export const AddProductContainer = styled.span`
+  display: flex;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 `;
