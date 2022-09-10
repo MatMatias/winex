@@ -6,6 +6,12 @@ import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import { formatCurrency } from "@/utils/format-currency";
 
 const StyledContainer = styled(ToastContainer)`
+  top: 6em;
+  right: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   .Toastify__toast-container {
     display: flex;
     flex-direction: row;
@@ -91,10 +97,9 @@ export const notify = (productName: string, productPrice: number) =>
           R$ {formatCurrency(productPrice)}
         </p>
       </div>
-    </div>,
-    { position: toast.POSITION.TOP_RIGHT }
+    </div>
   );
 
 export const Notification = () => {
-  return <StyledContainer autoClose={false} />;
+  return <StyledContainer hideProgressBar={true} />;
 };
