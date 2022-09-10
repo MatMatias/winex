@@ -1,6 +1,6 @@
 import type { ProductItemType } from "@/types/index";
 import { Fragment, useState } from "react";
-import { useProductListStore } from "@/store/index";
+import { useProductListStore, useChartListStore } from "@/store/index";
 import { httpRequest } from "@/utils/index";
 import { useQuery } from "@tanstack/react-query";
 import { ProductItem } from "./product-item/index";
@@ -16,7 +16,7 @@ import {
 import { Notification, notify } from "../notification";
 
 export const ProductList = () => {
-  const [chartItems, setChartItems] = useState<ProductItemType[]>([]);
+  const { addProduct } = useChartListStore((store) => store);
   const { params } = useProductListStore((store) => store);
 
   const { isLoading, isError, data, error } = useQuery(
@@ -50,11 +50,7 @@ export const ProductList = () => {
                 <ProductItem productItem={item} />
                 <AddToChartButton
                   onClick={() => {
-                    setChartItems((prevState) => [...prevState, item]);
-                    window.localStorage.setItem(
-                      "chartItems",
-                      JSON.stringify(chartItems)
-                    );
+                    addProduct(item);
                     notify(item.name, item.priceMember);
                   }}
                 >
