@@ -11,6 +11,7 @@ import {
 } from "./header-styles";
 import { Chart } from "../chart";
 import { SearchProduct } from "./search/index";
+import { ChartItemsCounter } from "./chart-items-counter/index";
 
 export const Header = () => {
   const [isChartOpen, setIsChartOpen] = useState<boolean>(false);
@@ -49,7 +50,9 @@ export const Header = () => {
           <UserIcon></UserIcon>
           <WineBoxIcon
             onClick={() => setIsChartOpen((prevState) => !prevState)}
-          ></WineBoxIcon>
+          >
+            <ChartItemsCounter />
+          </WineBoxIcon>
         </IconsContainer>
       </HeaderContainer>
     </Fragment>
