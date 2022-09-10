@@ -5,19 +5,11 @@ import { ChartProductList } from "./product-list-styles";
 export const ProductList = () => {
   const { chartList } = useChartListStore((store) => store);
 
-  console.log(chartList);
-
   if (chartList.length > 0) {
     return (
       <ChartProductList>
         {chartList.map((item) => {
-          return (
-            <Product
-              productItem={item}
-              chartItemsList={chartList}
-              key={item.product.id}
-            />
-          );
+          return <Product productItem={item} key={item.product.id} />;
         })}
       </ChartProductList>
     );

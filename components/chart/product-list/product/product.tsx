@@ -1,5 +1,4 @@
 import type { ProductItemType } from "@/types/index";
-import { useState } from "react";
 import { useChartListStore } from "@/store/index";
 import Image from "next/image";
 import {
@@ -9,16 +8,18 @@ import {
   ProductQuantityButton,
   PriceContainer,
 } from "./product-list-styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import { formatCurrency } from "@/utils/format-currency";
-import { countItemOnList } from "@/utils/count-items-on-list";
 
 interface ProductProps {
   productItem: { product: ProductItemType; quantity: number };
-  chartItemsList: { product: ProductItemType; quantity: number }[];
 }
 
-export const Product = ({ productItem, chartItemsList }: ProductProps) => {
-  const { addProduct } = useChartListStore((store) => store);
+export const Product = ({ productItem }: ProductProps) => {
+  const { increaseQuantity, decreaseQuantity, remove } = useChartListStore(
+    (store) => store
+  );
 
   return (
     <ChartProductListItem>
@@ -65,13 +66,13 @@ export const Product = ({ productItem, chartItemsList }: ProductProps) => {
         >
           <ProductQuantity>
             <ProductQuantityButton
-              onClick={() => addProduct(productItem.product)}
+              onClick={() => decreaseQuantity(productItem.product)}
             >
               -
             </ProductQuantityButton>
             <span>{productItem.quantity}</span>
             <ProductQuantityButton
-              onClick={() => addProduct(productItem.product)}
+              onClick={() => increaseQuantity(productItem.product)}
             >
               +
             </ProductQuantityButton>
@@ -79,11 +80,17 @@ export const Product = ({ productItem, chartItemsList }: ProductProps) => {
           <PriceContainer>
             <span style={{ fontSize: "14px" }}>R$ </span>
             <span style={{ fontSize: "20px" }}>
-              {formatCurrency(productItem.product.price)}
+              {formatCurrency(productItem.product.price * productItem.quantity)}
             </span>
           </PriceContainer>
         </div>
       </ProductListItemInfo>
+      <FontAwesomeIcon
+        onClick={() => remove(productItem.product)}
+        icon={faCircleXmark}
+        color="rgb(159, 159, 159)"
+        fontSize="18px"
+      />
     </ChartProductListItem>
   );
 };

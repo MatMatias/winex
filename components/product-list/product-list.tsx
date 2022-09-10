@@ -1,5 +1,5 @@
 import type { ProductItemType } from "@/types/index";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { useProductListStore, useChartListStore } from "@/store/index";
 import { httpRequest } from "@/utils/index";
 import { useQuery } from "@tanstack/react-query";
@@ -16,7 +16,7 @@ import {
 import { Notification, notify } from "../notification";
 
 export const ProductList = () => {
-  const { addProduct } = useChartListStore((store) => store);
+  const { increaseQuantity } = useChartListStore((store) => store);
   const { params } = useProductListStore((store) => store);
 
   const { isLoading, isError, data, error } = useQuery(
@@ -50,7 +50,7 @@ export const ProductList = () => {
                 <ProductItem productItem={item} />
                 <AddToChartButton
                   onClick={() => {
-                    addProduct(item);
+                    increaseQuantity(item);
                     notify(item.name, item.priceMember);
                   }}
                 >
