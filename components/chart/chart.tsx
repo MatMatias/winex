@@ -10,12 +10,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { ProductList } from "./product-list/index";
 import { SendOrder } from "./send-order/index";
+import { useChartListStore } from "@/store/chart-list-store";
 
 interface ChartProps {
   setIsChartOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const Chart = ({ setIsChartOpen }: ChartProps) => {
+  const { chartList } = useChartListStore((store) => store);
+
   useEffect(() => {
     const htmlBody = document.getElementsByTagName("body")[0];
     htmlBody.classList.add("no-scroll");
@@ -58,7 +61,7 @@ export const Chart = ({ setIsChartOpen }: ChartProps) => {
           </h1>
         </ChartContainerHeader>
         <ProductList />
-        <SendOrder />
+        {chartList.length > 0 && <SendOrder />}
       </ChartContainer>
       <FillerDiv onClick={closeChart}></FillerDiv>
     </ChartScreenContainer>
