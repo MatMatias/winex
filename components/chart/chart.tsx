@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { ProductList } from "./product-list/index";
+import { SendOrder } from "./send-order/index";
 
 interface ChartProps {
   setIsChartOpen: Dispatch<SetStateAction<boolean>>;
@@ -57,6 +58,7 @@ export const Chart = ({ setIsChartOpen }: ChartProps) => {
           </h1>
         </ChartContainerHeader>
         <ProductList />
+        <SendOrder />
       </ChartContainer>
       <FillerDiv onClick={closeChart}></FillerDiv>
     </ChartScreenContainer>

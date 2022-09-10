@@ -80,7 +80,9 @@ export const Product = ({ productItem }: ProductProps) => {
           <PriceContainer>
             <span style={{ fontSize: "14px" }}>R$ </span>
             <span style={{ fontSize: "20px" }}>
-              {formatCurrency(productItem.product.price * productItem.quantity)}
+              {formatCurrency(
+                productItem.product.priceMember * productItem.quantity
+              )}
             </span>
           </PriceContainer>
         </div>

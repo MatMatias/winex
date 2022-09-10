@@ -5,5 +5,6 @@ export const ChartProductList = styled.ul`
   flex-direction: column;
   gap: 0;
   height: 100%;
+  overflow-y: scroll;
   width: 100%;
 `;

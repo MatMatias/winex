@@ -4,7 +4,7 @@ export const ChartProductListItem = styled.li`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 20%;
+  height: 22%;
   width: 100%;
   border-bottom: 1px solid #ddd;
   padding: 1rem;

@@ -15,7 +15,7 @@ export const ChartScreenContainer = styled.div`
 `;
 
 export const ChartContainer = styled.div`
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(245, 245, 245);
   display: flex;
   flex-direction: column;
   width: 25%;
@@ -29,6 +29,7 @@ export const FillerDiv = styled.div`
 
 export const ChartContainerHeader = styled.div`
   display: flex;
+  background-color: rgb(255, 255, 255);
   flex-direction: row;
   padding-top: 1rem;
   padding-left: 1rem;
