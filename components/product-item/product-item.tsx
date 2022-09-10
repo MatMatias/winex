@@ -142,7 +142,7 @@ export const ProductItem = () => {
               <AddProductContainer
                 onClick={() => {
                   increaseQuantity(product, quantity);
-                  notify(product.name, product.price);
+                  notify(product.name, quantity * product.priceMember);
                 }}
               >
                 Adicionar
