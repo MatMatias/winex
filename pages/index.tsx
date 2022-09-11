@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Header, PriceFilter, ProductList } from "@/components/index";
-import { MainContainer } from "@/styles/index";
+import { ProductList } from "@/components/index";
 
 const Home: NextPage = () => {
   return (
@@ -11,10 +10,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Buy wines" />
       </Head>
 
-      <MainContainer>
-        <PriceFilter />
-        <ProductList />
-      </MainContainer>
+      <ProductList />
     </div>
   );
 };

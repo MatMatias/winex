@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState } from "react";
+import { useBreakPoints } from "hooks/useBreakPoints";
 import {
   HeaderContainer,
-  NavList,
-  NavItem,
   Div,
   IconsContainer,
   UserIcon,
@@ -16,38 +15,24 @@ import { ChartItemsCounter } from "./chart-items-counter/index";
 
 export const Header = () => {
   const [isChartOpen, setIsChartOpen] = useState<boolean>(false);
+  const { isFirstBreakpoint } = useBreakPoints();
 
   return (
     <Fragment>
       {isChartOpen && <Chart setIsChartOpen={setIsChartOpen} />}
       <HeaderContainer>
         <Div>
-          <Link href="/">
-            <Image
-              src={"https://img.wine.com.br/logo/wine/black/wine.svg"}
-              alt="Wine"
-              width="108px"
-              height="30px"
-              style={{ cursor: "pointer" }}
-            />
-          </Link>
-          <NavList>
-            <NavItem>
-              <a href="#">Clube</a>
-            </NavItem>
-            <NavItem>
-              <a href="#">Loja</a>
-            </NavItem>
-            <NavItem>
-              <a href="#">Produtos</a>
-            </NavItem>
-            <NavItem>
-              <a href="#">Ofertas</a>
-            </NavItem>
-            <NavItem>
-              <a href="#">Eventos</a>
-            </NavItem>
-          </NavList>
+          {!isFirstBreakpoint && (
+            <Link href="/">
+              <Image
+                src={"https://img.wine.com.br/logo/wine/black/wine.svg"}
+                alt="Wine"
+                width="108px"
+                height="30px"
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
+          )}
         </Div>
         <IconsContainer>
           <SearchProduct />

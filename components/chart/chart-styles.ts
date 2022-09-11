@@ -18,7 +18,7 @@ export const ChartContainer = styled.div`
   background-color: rgb(245, 245, 245);
   display: flex;
   flex-direction: column;
-  width: 25%;
+  min-width: 350px;
   height: 100%;
 `;
 

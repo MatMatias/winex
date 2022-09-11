@@ -4,9 +4,7 @@ export const HeaderContainer = styled.header`
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding-left: 6rem;
-  padding-right: 6rem;
+  justify-content: space-around;
   border: 2px;
   border-color: rgb(200, 200, 200);
   border-style: none none solid none;

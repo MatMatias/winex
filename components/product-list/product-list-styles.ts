@@ -5,6 +5,7 @@ export const ProductListContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  align-items: center;
 `;
 
 export const ProductListHeaderCounter = styled.strong`
@@ -18,11 +19,21 @@ export const ProductListHeaderText = styled.span`
 `;
 
 export const ProductListDataContainer = styled.ul`
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  column-gap: 2rem;
+  row-gap: 3rem;
+
+  @media (min-width: 751px) and (max-width: 1100px) {
+    grid-template-columns: auto auto;
+    row-gap: 2rem;
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: auto;
+    row-gap: 2rem;
+  }
 `;
 
 export const ProductCard = styled.li`

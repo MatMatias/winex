@@ -21,8 +21,8 @@ export const ProductList = () => {
           flexDirection: "column",
           alignItems: "center",
           paddingTop: "2rem",
-          height: "100%",
-          width: "100%",
+          height: "auto",
+          width: "auto",
           backgroundColor: "rgb(245,245,245)",
         }}
       >

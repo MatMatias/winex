@@ -1,6 +1,7 @@
 import type { ProductItemType } from "@/types/index";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useProductListStore, useChartListStore } from "@/store/index";
+import { useBreakPoints } from "hooks/useBreakPoints";
 import { httpRequest } from "@/utils/index";
 import { useQuery } from "@tanstack/react-query";
 import { ProductItem } from "./product-item/index";
@@ -17,12 +18,21 @@ import { Notification, notify } from "../notification";
 
 export const ProductList = () => {
   const { increaseQuantity } = useChartListStore((store) => store);
-  const { params } = useProductListStore((store) => store);
+  const { params, updateParams } = useProductListStore((store) => store);
+  const { isFirstBreakpoint, isSecondBreakpoint } = useBreakPoints();
+
+  useEffect(() => {
+    if (isSecondBreakpoint || isFirstBreakpoint) {
+      updateParams({ ...params, limit: 8 });
+    } else {
+      updateParams({ ...params, limit: 9 });
+    }
+  }, [isFirstBreakpoint, isSecondBreakpoint, updateParams]);
 
   const { isLoading, isError, data, error } = useQuery(
     ["products", params.page, params.limit, params.name, params.priceRange],
-    () => httpRequest("GET", "products", params),
-    { keepPreviousData: true }
+    () => httpRequest("GET", "products", params)
+    // { keepPreviousData: true }
   );
 
   if (isLoading) {
