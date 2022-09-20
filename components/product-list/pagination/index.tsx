@@ -1,3 +1,4 @@
 import { Pagination } from "./pagination";
+import { PaginationMobile } from "./pagination-mobile";
 
-export { Pagination };
+export { Pagination, PaginationMobile };

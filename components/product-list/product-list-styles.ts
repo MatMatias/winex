@@ -21,7 +21,6 @@ export const ProductListHeaderText = styled.span`
 export const ProductListDataContainer = styled.ul`
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto;
   column-gap: 2rem;
   row-gap: 3rem;
 
@@ -36,7 +35,7 @@ export const ProductListDataContainer = styled.ul`
   }
 `;
 
-export const ProductCard = styled.li`
+export const ProductCard = styled.div`
   cursor: pointer;
   width: 340px;
   height: 480px;
@@ -48,7 +47,7 @@ export const ProductCard = styled.li`
   padding-bottom: 1.5rem;
 `;
 
-export const ProductContainer = styled.div`
+export const ProductContainer = styled.li`
   align-items: center;
   display: flex;
   flex-direction: column;
