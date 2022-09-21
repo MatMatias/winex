@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const ProductItemContainer = styled.main`
   margin-top: 1rem;
-  margin-left: 20rem;
-  margin-right: 10rem;
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

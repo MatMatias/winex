@@ -29,16 +29,16 @@ export const ProductList = () => {
     } else {
       updateParams({ ...params, limit: 9 });
     }
-  }, [isFirstBreakpoint, isSecondBreakpoint, updateParams]);
+  }, []);
 
   const { isLoading, isError, data, error } = useQuery(
     ["products", params.page, params.limit, params.name, params.priceRange],
-    () => httpRequest("GET", "products", params),
-    { keepPreviousData: true }
+    () => httpRequest("GET", "products", params)
+    // { keepPreviousData: true }
   );
 
   if (isLoading) {
-    return <strong>Loading...</strong>;
+    return <Fragment></Fragment>;
   }
 
   if (isError) {

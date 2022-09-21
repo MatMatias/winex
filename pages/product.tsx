@@ -1,35 +1,18 @@
 import type { NextPage } from "next";
-import Link from "next/link";
-import { ProductItem } from "@/components/product-item/product-item";
+import { ProductItem, ProductItemMobile } from "@/components/product-item";
 import { Fragment } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { useBreakPoints } from "@/hooks/useBreakPoints";
 
 const Product: NextPage = () => {
+  const { isFirstBreakpoint, isSecondBreakpoint } = useBreakPoints();
+  let isMobile: boolean = false;
+
+  if (isFirstBreakpoint || isSecondBreakpoint) {
+    isMobile = true;
+  }
+
   return (
-    <Fragment>
-      <div
-        style={{
-          marginTop: "2rem",
-          marginLeft: "5rem",
-        }}
-      >
-        <Link href="/">
-          <a
-            style={{
-              cursor: "pointer",
-              fontSize: "30px",
-              color: "rgb(0, 0, 0)",
-              fontWeight: "200",
-            }}
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-            &nbsp;&nbsp;Voltar
-          </a>
-        </Link>
-      </div>
-      <ProductItem />
-    </Fragment>
+    <Fragment>{isMobile ? <ProductItemMobile /> : <ProductItem />}</Fragment>
   );
 };
 

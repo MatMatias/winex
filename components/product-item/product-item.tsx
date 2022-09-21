@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { useChartListStore, useProductStore } from "@/store/index";
+import Link from "next/link";
 import Image from "next/image";
 import { RatingStars } from "./rating-stars";
 import {
@@ -16,7 +17,11 @@ import {
 } from "./product-item-styles";
 import { Notification, notify } from "@/components/notification/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlus, faCircleMinus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCirclePlus,
+  faCircleMinus,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import { formatCurrency } from "@/utils/format-currency";
 
 export const ProductItem = () => {
@@ -28,6 +33,23 @@ export const ProductItem = () => {
     return (
       <Fragment>
         <Notification />
+        <div style={{ marginTop: "2rem" }}>
+          <Link href="/">
+            <a
+              style={{
+                marginTop: "2rem",
+                marginLeft: "4rem",
+                cursor: "pointer",
+                fontSize: "30px",
+                color: "rgb(0, 0, 0)",
+                fontWeight: "200",
+              }}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} />
+              {"  Voltar"}
+            </a>
+          </Link>
+        </div>
         <ProductItemContainer>
           <Image
             src={product.image}
