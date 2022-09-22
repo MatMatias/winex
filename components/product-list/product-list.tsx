@@ -33,8 +33,8 @@ export const ProductList = () => {
 
   const { isLoading, isError, data, error } = useQuery(
     ["products", params.page, params.limit, params.name, params.priceRange],
-    () => httpRequest("GET", "products", params)
-    // { keepPreviousData: true }
+    () => httpRequest("GET", "products", params),
+    { keepPreviousData: true }
   );
 
   if (isLoading) {
